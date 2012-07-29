@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  icao: MyString
+  name: MyString
+  lat: 1.5
+  lon: 1.5
+  elevation: 1
+  ta: 1
+  msa: 1
+
+two:
+  icao: MyString
+  name: MyString
+  lat: 1.5
+  lon: 1.5
+  elevation: 1
+  ta: 1
+  msa: 1
