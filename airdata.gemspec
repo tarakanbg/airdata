@@ -7,8 +7,8 @@ require "airdata/version"
 Gem::Specification.new do |s|
   s.name        = "airdata"
   s.version     = Airdata::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.authors     = ["Svilen Vassilev"]
+  s.email       = ["svilen@rubystudio.net"]
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of Airdata."
   s.description = "TODO: Description of Airdata."
