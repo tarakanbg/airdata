@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.7"
   # s.add_dependency "jquery-rails"
   s.add_dependency "curb", "~> 0.8.1"
+  s.add_dependency "activerecord-import", "~> 0.2.9"
 
   s.add_development_dependency "sqlite3"
 end

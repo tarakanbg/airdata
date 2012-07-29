@@ -26,8 +26,17 @@ Run the following commands in your app directory:
 ```sh
 rake airdata:install:migrations
 rake db:migrate
+rake airdata:setup
+```
 
-....
+### Updating the data
+
+If you want to do a data update to a newer AIRAC cycle, run the following two
+rake tasks for clearing up the old data and re-injecting the current one:
+
+```sh
+rake airdata:truncate
+rake airdata:setup
 ```
 
 ## Data stats

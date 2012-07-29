@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     airdata (0.0.1)
+      activerecord-import (~> 0.2.9)
       curb (~> 0.8.1)
       rails (~> 3.2.7)
 
@@ -29,6 +30,9 @@ GEM
       activesupport (= 3.2.7)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-import (0.2.9)
+      activerecord (~> 3.0)
+      activerecord (~> 3.0)
     activeresource (3.2.7)
       activemodel (= 3.2.7)
       activesupport (= 3.2.7)
@@ -94,6 +98,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import (~> 0.2.9)
   airdata!
   jquery-rails
   sqlite3
