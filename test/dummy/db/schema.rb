@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729093820) do
+ActiveRecord::Schema.define(:version => 20120729134341) do
 
   create_table "airdata_airports", :force => true do |t|
     t.string   "icao"
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(:version => 20120729093820) do
     t.float    "glidepath"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "airdata_waypoints", :force => true do |t|
+    t.string   "ident"
+    t.string   "name"
+    t.float    "freq"
+    t.float    "lat"
+    t.float    "lon"
+    t.integer  "range"
+    t.integer  "elevation"
+    t.string   "country_code"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

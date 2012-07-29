@@ -15,14 +15,36 @@ rake db:migrate
 
 ## Data stats
 
-* Airports:
-* Runways:
-* Navaids:
-* Waypoints:
+* Airports: 10775
+* Runways: 28977
+* Navaids: 16300
+* Waypoints: 214400
+
+* Total DB records:
+
+## Lib classes
+
+2 classes handle the heavy lifting of downloading, parsing and injecting the data
+within you local database: `Airdata::DataDownloader` and `Airdata::DataInjector`.
+Generally there's no need to deal with them and they're not considered public APIs,
+all the functionality you need to install is triggered via rake tasks / generators.
 
 ## Models and their attributes
 
+These models and attribute sets will be available in your parent app,
+namespaced within the `Airdata` module and accessible like this:
+
+ ```ruby
+ Airdata::Airports
+ Airdata::Runways
+ Airdata::Waypoints
+```
+Currently there are no special public methods/APIs available for these models,
+the engine is tailored primarily for data storage and access.
+
 ### Airports
+
+Includes one-to-many association with the `Runways` class.
 
  ```ruby
 attr_accessible :elevation, :icao, :lat, :lon, :msa, :name, :ta
@@ -39,6 +61,8 @@ has_many :runways, :dependent => :destroy
 
 ### Runways
 
+Includes one-to-many association with the `Airports` models.
+
 ```ruby
 attr_accessible :airport_id, :course, :elevation, :glidepath, :ils, :ils_fac
 attr_accessible :ils_freq, :lat, :length, :lon, :number
@@ -46,7 +70,7 @@ attr_accessible :ils_freq, :lat, :length, :lon, :number
 belongs_to :airport
 ```
 
-* Airport_ID (one-to-many association)
+* airport_id (association)
 * number
 * course
 * elevation
@@ -57,3 +81,20 @@ belongs_to :airport
 * latitude on the threshold
 * longitude on the threshold
 * length
+
+### Waypoints (includes Navaids)
+
+Regular waypoints only include `:ident, :lat, :lon, :country_code`. The rest is
+for navaids.
+
+```ruby
+attr_accessible :country_code, :elevation, :freq, :ident, :lat, :lon, :name, :range
+```
+* ident
+* name
+* frequency
+* country code
+* elevation
+* latitude
+* longitude
+* range (in MSFS)

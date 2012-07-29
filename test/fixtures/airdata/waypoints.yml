@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ident: MyString
+  name: MyString
+  freq: 1.5
+  lat: 1.5
+  lon: 1.5
+  range: 1
+  elevation: 1
+  country_code: MyString
+
+two:
+  ident: MyString
+  name: MyString
+  freq: 1.5
+  lat: 1.5
+  lon: 1.5
+  range: 1
+  elevation: 1
+  country_code: MyString
