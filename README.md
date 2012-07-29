@@ -39,12 +39,16 @@ rake db:migrate
 
 * Total DB records: 270472
 
+All data is derrived and compiled from public sources such as:
+[OurAirports](http://www.ourairports.com/data/) and
+[OpenFlights](http://openflights.org/data.html)
+
 ## Lib classes
 
 2 classes handle the heavy lifting of downloading, parsing and injecting the data
 within you local database: `Airdata::DataDownloader` and `Airdata::DataInjector`.
-Generally won't need to deal with them directly and nothing there is considered
-public API. All the functionality you need to install is triggered via
+Generally you won't need to deal with them directly and nothing there is
+considered public API. All the functionality you need to install is triggered via
 rake tasks / generators.
 
 ## Models and their attributes
