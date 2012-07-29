@@ -13,13 +13,14 @@ module Airdata
       create_local_file
     end
 
+    private
+
     def create_local_file
       data = Tempfile.new(@name, :encoding => 'utf-8')
       File.rename data.path, @local
       data = Curl::Easy.perform(@remote).body_str
       File.open(@local, "w+") {|f| f.write(data)}
     end
-
 
   end
 
@@ -36,38 +37,54 @@ module Airdata
       process
     end
 
+    private
+
     def process
       inject_airports if @name == "airports"
+      inject_navaids if @name == "navaids"
+      inject_waypoints if @name == "waypoints"
+      cleanup
     end
 
     def inject_airports
-      Airdata::Airport.destroy_all
-      Airdata::Runway.destroy_all
+      delete_old_records
       CSV.foreach(@local, :col_sep =>',') do |row|
-        type = row[0].to_s
+        type = row[0]
         if type == "A"
-
-          icao, name, lat, lon, elevation, ta, msa = row[1].to_s, row[2].to_s, row[3].to_s, row[4].to_s, row[5].to_s, row[6].to_s, row[8].to_s
-          ap = Airdata::Airport.create!(:icao => icao, :name => name, :lat => lat, :lon => lon,
-                                   :elevation => elevation, :ta => ta, :msa => msa )
+          ap = Airdata::Airport.create!(:icao => row[1], :name => row[2], :lat => row[3],
+                 :lon => row[4], :elevation => row[5], :ta => row[6], :msa => row[8] )
           @last_ap = ap.id
-
         elsif type == "R"
+          Airdata::Runway.create!(:airport_id => @last_ap, :course => row[2], :elevation => row[10],
+            :glidepath => row[11], :ils => row[5], :ils_fac => row[7], :ils_freq => row[6],
+            :lat => row[8], :lon => row[9], :length => row[3], :number => row[1])
+        end # end if
+      end  # end CSV loop
+    end # end method
 
-          number, course, length, ils = row[1].to_s, row[2].to_s, row[3].to_s, row[5].to_s
-          ils_freq, ils_fac, lat, lon = row[6].to_s, row[7].to_s, row[8].to_s, row[9].to_s
-          elevation, glidepath = row[10].to_s, row[11].to_s
-
-          Airdata::Runway.create!(:airport_id => @last_ap, :course => course, :elevation => elevation,
-            :glidepath => glidepath, :ils => ils, :ils_fac => ils_fac, :ils_freq => ils_freq,
-            :lat => lat, :lon => lon, :length => length, :number => number)
-        end
+    def inject_navaids
+      Airdata::Waypoint.destroy_all
+      CSV.foreach(@local, :col_sep =>',') do |row|
+        Airdata::Waypoint.create!(:ident => row[0], :name => row[1], :freq => row[2],
+          :range => row[5], :lat => row[6], :lon => row[7], :elevation => row[8], :country_code => row[9])
       end
     end
 
+    def inject_waypoints
+      CSV.foreach(@local, :col_sep =>',') do |row|
+        Airdata::Waypoint.create!(:ident => row[0], :lat => row[1], :lon => row[2], :country_code => row[3])
+      end
+    end
+
+    def cleanup
+      File.delete(@local)
+    end
+
+    def delete_old_records
+      Airdata::Airport.destroy_all
+      Airdata::Runway.destroy_all
+    end
 
   end
 
-  class DataProcessor
-  end
 end
