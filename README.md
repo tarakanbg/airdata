@@ -13,9 +13,10 @@ your database with [data](#data-stats) (based on *AIRAC cycle 1208*.)
 
 ## Installation within parent app
 
-Add this line to your application's Gemfile:
+Add this gem AND the `activerecord-import` your application's Gemfile:
 
     gem 'airdata'
+    gem "activerecord-import", "~> 0.2.9"  # Required for the data import
 
 And then execute:
 
@@ -90,7 +91,7 @@ considered public API, apart from the following public class methods:
 These AR models and attribute sets will be available in your parent app,
 namespaced within the `Airdata` module and accessible like this:
 
- ```ruby
+```ruby
  Airdata::Airports
  Airdata::Runways
  Airdata::Waypoints
@@ -102,11 +103,11 @@ the engine is tailored primarily for data storage and access.
 
 Includes one-to-many association with the `Runways` class.
 
- ```ruby
+```ruby
 attr_accessible :elevation, :icao, :lat, :lon, :msa, :name, :ta
 
 has_many :runways, :dependent => :destroy
- ```
+```
 * ICAO
 * Name (city)
 * Latitude
@@ -161,7 +162,7 @@ Here's a lisk of all rake tasks that this gem adds:
 
 ```sh
 rake airdata:install:migrations  # Copy migrations from airdata to application.
-                                 # This is part of the initiall install process.
+                                 # This is part of the initial install process.
 rake airdata:setup               # Downloads and installs the latest navdata
 rake airdata:cycle               # Compares your currently installed AIRAC cycle
                                  # agianst the latest available
@@ -177,4 +178,4 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 
 Copyright © 2012 [Svilen Vassilev](http://about.me/svilen)
 
-Licensed under the [MIT LICENSE](https://github.com/tarakanbg/airdata/blob/master/LICENSE)
+Released under the [MIT LICENSE](https://github.com/tarakanbg/airdata/blob/master/LICENSE)

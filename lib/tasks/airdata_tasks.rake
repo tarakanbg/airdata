@@ -4,7 +4,7 @@ namespace :airdata do
     puts ""
     puts "Please note this is a VERY LONG task, downloading, validating and"
     puts "injecting nearly 300,000 DB records. Depending on your system and "
-    puts "database adapter it might take more than an hour to complete!"
+    puts "database adapter it might take more than two hours to complete!"
     puts "Stay calm and do not abort the task unless you get any error messages...."
     puts ""
     puts "Processing Airports..."
@@ -13,6 +13,7 @@ namespace :airdata do
     Airdata::DataInjector.new("navaids")
     puts "Processing Waypoints..."
     Airdata::DataInjector.new("waypoints")
+    Rake::Task["rake log:clear"].execute
     puts "All done! Thanks for your patience! Enjoy your newly installed navdata!"
   end
 
