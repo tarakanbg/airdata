@@ -176,4 +176,5 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 ## Credits
 
 Copyright © 2012 [Svilen Vassilev](http://about.me/svilen)
+
 Licensed under the [MIT LICENSE](https://github.com/tarakanbg/airdata/blob/master/LICENSE)
