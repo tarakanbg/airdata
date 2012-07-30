@@ -13,6 +13,15 @@ module Airdata
       create_local_file
     end
 
+    def self.cycle
+      Airdata::Airoption.last.value
+    end
+
+    def self.latest_cycle
+      txt = "http://cloud.github.com/downloads/tarakanbg/airdata/cycle.airdata"
+      Curl::Easy.perform(txt).body_str[0..3]
+    end
+
     private
 
     def create_local_file
@@ -34,7 +43,7 @@ module Airdata
       Airdata::DataDownloader.new(@name)
       @local = "#{Dir.tmpdir}/#{@name}.airdata"
       @last_ap = ""
-      @records = [];
+      @records = []
       process
     end
 
@@ -44,11 +53,11 @@ module Airdata
       inject_airports if @name == "airports"
       inject_navaids if @name == "navaids"
       inject_waypoints if @name == "waypoints"
+      Airdata::Airoption.create!(:key => "cycle", :value => Airdata::DataDownloader.latest_cycle)
       cleanup
     end
 
     def inject_airports
-      # delete_old_records
       CSV.foreach(@local, :col_sep =>',') do |row|
         type = row[0]
         if type == "A"
@@ -56,9 +65,6 @@ module Airdata
                  :lon => row[4], :elevation => row[5], :ta => row[6], :msa => row[8] )
           @last_ap = ap.id
         elsif type == "R"
-          # Airdata::Runway.create!(:airport_id => @last_ap, :course => row[2], :elevation => row[10],
-          #   :glidepath => row[11], :ils => row[5], :ils_fac => row[7], :ils_freq => row[6],
-          #   :lat => row[8], :lon => row[9], :length => row[3], :number => row[1])
           @records << Airdata::Runway.new(:airport_id => @last_ap, :course => row[2], :elevation => row[10],
             :glidepath => row[11], :ils => row[5], :ils_fac => row[7], :ils_freq => row[6],
             :lat => row[8], :lon => row[9], :length => row[3], :number => row[1])
@@ -68,8 +74,6 @@ module Airdata
     end # end method
 
     def inject_navaids
-      # Airdata::Waypoint.destroy_all
-      # Airdata::Waypoint.delete_all
       CSV.foreach(@local, :col_sep =>',') do |row|
         @records << Airdata::Waypoint.new(:ident => row[0], :name => row[1], :freq => row[2],
           :range => row[5], :lat => row[6], :lon => row[7], :elevation => row[8], :country_code => row[9])
@@ -86,13 +90,6 @@ module Airdata
 
     def cleanup
       File.delete(@local)
-    end
-
-    def delete_old_records
-      # Airdata::Airport.destroy_all
-      # Airdata::Runway.destroy_all
-      # Airdata::Airport.delete_all
-      # Airdata::Runway.delete_all
     end
 
   end

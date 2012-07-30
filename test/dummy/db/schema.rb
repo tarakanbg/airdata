@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729134341) do
+ActiveRecord::Schema.define(:version => 20120730092740) do
+
+  create_table "airdata_airoptions", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "airdata_airports", :force => true do |t|
     t.string   "icao"
