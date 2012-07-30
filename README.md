@@ -15,7 +15,7 @@ your database with [data](#data-stats) (based on *AIRAC cycle 1208*.)
 
 Add this line to your application's Gemfile:
 
-    gem 'vatsim_online'
+    gem 'airdata'
 
 And then execute:
 
