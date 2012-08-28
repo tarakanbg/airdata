@@ -4,5 +4,7 @@ module Airdata
     attr_accessible :ils_freq, :lat, :length, :lon, :number
 
     belongs_to :airport
+
+    default_scope order("airport_id ASC")
   end
 end

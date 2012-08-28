@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    airdata (0.1)
+    airdata (0.2)
       activerecord-import (~> 0.2.9)
       curb (~> 0.8.1)
       rails (~> 3.2.7)

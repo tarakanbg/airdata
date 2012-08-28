@@ -99,6 +99,13 @@ namespaced within the `Airdata` module and accessible like this:
 Currently there are no special public methods/APIs available for these models,
 the engine is tailored primarily for data storage and access.
 
+### Ordering
+
+Default ordering is implemented for all 3 classes. Airports and waypoints are
+sorted *alphabetically* i.e. ordered by `id`, and the runways are ordered by their
+`airport_id`. Remember you can always override the default ordering by using Active
+Record's `.reorder` [method](http://guides.rubyonrails.org/active_record_querying.html#ordering)
+
 ### Airports
 
 Includes one-to-many association with the `Runways` class.
@@ -147,6 +154,7 @@ for navaids.
 ```ruby
 attr_accessible :country_code, :elevation, :freq, :ident, :lat, :lon, :name, :range
 ```
+
 * ident
 * name
 * frequency
@@ -174,8 +182,20 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 
 ```
 
+## Changelog
+
+### v. 0.2, 29 August 2012
+
+* added default ordering for all 3 models. Airports and waypoints/navaids are
+sorted by `id`, runways are sorted by `airport_id`
+
 ## Credits
 
 Copyright © 2012 [Svilen Vassilev](http://about.me/svilen)
+
+*If you find my work useful or time-saving, you can endorse it or buy me a beer:*
+
+[![endorse](http://api.coderwall.com/svilenv/endorse.png)](http://coderwall.com/svilenv)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5FR7AQA4PLD8A)
 
 Released under the [MIT LICENSE](https://github.com/tarakanbg/airdata/blob/master/LICENSE)
