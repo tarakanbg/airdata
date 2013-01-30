@@ -5,18 +5,24 @@ Rails engine for adding aviation related models and data to a web application.
 It will add 3 Active Record models to your rails application: `Airports`, `Runways`
 and `Waypoints` (including Navaids). It will add the corresponding database
 structure (migrations) and finally it will populate the corresponding tables of
-your database with [data](#data-stats) (based on *AIRAC cycle 1208*.)
+your database with [data](#data-stats) (based on *AIRAC cycle 1301*.)
 
 [![Build Status](https://secure.travis-ci.org/tarakanbg/airdata.png)](http://travis-ci.org/tarakanbg/airdata)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/tarakanbg/airdata)
 [![Gemnasium](https://gemnasium.com/tarakanbg/airdata.png?travis)](https://gemnasium.com/tarakanbg/airdata)
+[![Gem Version](https://badge.fury.io/rb/airdata.png)](http://badge.fury.io/rb/airdata)
+
+## Disclaimer
+
+**This database is designed for training, education and flight simulation purposes! Its contents might be outdated
+and shall not be used for real world navigation and flight as it is unlawful and unsafe to do so!**
 
 ## Installation within parent app
 
 Add this gem AND the `activerecord-import` your application's Gemfile:
 
     gem 'airdata'
-    gem "activerecord-import", "~> 0.2.9"  # Required for the data import
+    gem "activerecord-import", "~> 0.3.1"  # Required for the data import
 
 And then execute:
 
@@ -38,8 +44,8 @@ latest available one by running:
 ```sh
 rake airdata:cycle  # =>
 
-  Currently instaled AIRAC cycle: 1208
-  Latest available AIRAC cycle: 1208
+  Currently instaled AIRAC cycle: 1301
+  Latest available AIRAC cycle: 1301
 
   No update is necessary!
 
@@ -80,10 +86,10 @@ considered public API, apart from the following public class methods:
 
 ```ruby
   # Returns the currently installed AIRAC cycle:
-  Airdata::DataDownloader.cycle # => 1206
+  Airdata::DataDownloader.cycle # => 1208
 
   # Returns the latest available for download AIRAC cycle:
-  Airdata::DataDownloader.latest_cycle # => 1208
+  Airdata::DataDownloader.latest_cycle # => 1301
 ```
 
 ## Models and their attributes
@@ -184,6 +190,11 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 
 ## Changelog
 
+### v. 0.3, 30 January 2013
+
+* moved away from the deprecated github downloads
+* updated dependencies
+
 ### v. 0.2, 29 August 2012
 
 * added default ordering for all 3 models. Airports and waypoints/navaids are
@@ -191,11 +202,11 @@ sorted by `id`, runways are sorted by `airport_id`
 
 ## Credits
 
-Copyright © 2012 [Svilen Vassilev](http://about.me/svilen)
+Copyright © 2013 [Svilen Vassilev](http://svilen.rubystudio.net)
 
 *If you find my work useful or time-saving, you can endorse it or buy me a beer:*
 
-[![endorse](http://api.coderwall.com/svilenv/endorse.png)](http://coderwall.com/svilenv)
+[![endorse](http://api.coderwall.com/svilenv/endorsecount.png)](http://coderwall.com/svilenv)
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5FR7AQA4PLD8A)
 
 Released under the [MIT LICENSE](https://github.com/tarakanbg/airdata/blob/master/LICENSE)

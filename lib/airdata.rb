@@ -9,7 +9,7 @@ module Airdata
     def initialize(name)
       @name = name
       @local = "#{Dir.tmpdir}/#{@name}.airdata"
-      @remote = "http://cloud.github.com/downloads/tarakanbg/airdata/#{@name}.airdata"
+      @remote = "http://files.rubystudio.net/airdata/#{@name}.airdata"
       create_local_file
     end
 
@@ -18,7 +18,7 @@ module Airdata
     end
 
     def self.latest_cycle
-      txt = "http://cloud.github.com/downloads/tarakanbg/airdata/cycle.airdata"
+      txt = "http://files.rubystudio.net/airdata/cycle.airdata"
       Curl::Easy.perform(txt).body_str[0..3]
     end
 
