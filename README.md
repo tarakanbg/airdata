@@ -65,12 +65,11 @@ rake airdata:update
 
 ## Data stats
 
-* Airports: 10775
-* Runways: 28977
-* Navaids: 16300
-* Waypoints: 214400
+* Airports: 10840
+* Runways: 29089
+* Waypoints and navaids: 239293
 
-* Total DB records: 270472
+* Total DB records: 279222
 
 All data is derrived and compiled from public sources such as:
 [OurAirports](http://www.ourairports.com/data/) and
@@ -190,10 +189,12 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 
 ## Changelog
 
-### v. 0.3, 30 January 2013
+### v. 0.3, 1 February 2013
 
 * moved away from the deprecated github downloads
 * updated dependencies
+* inproved setup/update processing speed
+* bugfixes
 
 ### v. 0.2, 29 August 2012
 

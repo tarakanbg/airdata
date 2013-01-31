@@ -13,7 +13,7 @@ namespace :airdata do
     Airdata::DataInjector.new("navaids")
     puts "Processing Waypoints..."
     Airdata::DataInjector.new("waypoints")
-    Rake::Task["rake log:clear"].execute
+    Rake::Task["log:clear"].execute
     puts "All done! Thanks for your patience! Enjoy your newly installed navdata!"
   end
 
