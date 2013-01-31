@@ -187,14 +187,21 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 
 ```
 
+## Updating from older versions
+
+* make sure to run the `rake airdata:update` task after updating the gem. This
+  will ensure all latest migrations and modifications to the data structure are
+  executed and will inject the latest available dataset
+
 ## Changelog
 
-### v. 0.3, 1 February 2013
+### v. 0.3.1, 1 February 2013
 
 * moved away from the deprecated github downloads
 * updated dependencies
 * inproved setup/update processing speed
-* bugfixes
+* fixed support for multiple parallel runways (left, right, center)
+* other bugfixes
 
 ### v. 0.2, 29 August 2012
 

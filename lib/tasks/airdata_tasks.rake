@@ -63,6 +63,8 @@ namespace :airdata do
   desc "Removes old Airdata and installs latest available"
   task :update => :environment do
     Rake::Task["airdata:truncate"].execute
+    Rake::Task["airdata:install:migrations"].execute
+    Rake::Task["db:migrate"].execute
     Rake::Task["airdata:setup"].execute
   end
 
