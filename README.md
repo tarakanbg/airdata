@@ -19,7 +19,7 @@ and shall not be used for real world navigation and flight as it is unlawful and
 
 ## Installation within parent app
 
-Add this gem AND the `activerecord-import` your application's Gemfile:
+Add this gem AND the `activerecord-import` gem to your application's Gemfile:
 
     gem 'airdata'
     gem "activerecord-import", "~> 0.3.0"  # Required for the data import
