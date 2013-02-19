@@ -8,7 +8,7 @@ structure (migrations) and finally it will populate the corresponding tables of
 your database with [data](#data-stats) (based on *AIRAC cycle 1301*.)
 
 [![Build Status](https://secure.travis-ci.org/tarakanbg/airdata.png)](http://travis-ci.org/tarakanbg/airdata)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/tarakanbg/airdata)
+[![Code Climate](https://codeclimate.com/github/tarakanbg/airdata.png)](https://codeclimate.com/github/tarakanbg/airdata)
 [![Gemnasium](https://gemnasium.com/tarakanbg/airdata.png?travis)](https://gemnasium.com/tarakanbg/airdata)
 [![Gem Version](https://badge.fury.io/rb/airdata.png)](http://badge.fury.io/rb/airdata)
 
