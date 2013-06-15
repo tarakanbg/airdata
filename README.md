@@ -5,7 +5,7 @@ Rails engine for adding aviation related models and data to a web application.
 It will add 3 Active Record models to your rails application: `Airports`, `Runways`
 and `Waypoints` (including Navaids). It will add the corresponding database
 structure (migrations) and finally it will populate the corresponding tables of
-your database with [data](#data-stats) (based on *AIRAC cycle 1301*.)
+your database with [data](#data-stats) (based on *AIRAC cycle 1306*.)
 
 [![Build Status](https://secure.travis-ci.org/tarakanbg/airdata.png)](http://travis-ci.org/tarakanbg/airdata)
 [![Code Climate](https://codeclimate.com/github/tarakanbg/airdata.png)](https://codeclimate.com/github/tarakanbg/airdata)
@@ -44,8 +44,8 @@ latest available one by running:
 ```sh
 rake airdata:cycle  # =>
 
-  Currently instaled AIRAC cycle: 1301
-  Latest available AIRAC cycle: 1301
+  Currently instaled AIRAC cycle: 1306
+  Latest available AIRAC cycle: 1306
 
   No update is necessary!
 
@@ -194,6 +194,10 @@ rake airdata:update              # Removes old Airdata and installs latest avail
   executed and will inject the latest available dataset
 
 ## Changelog
+
+### v. 0.3.2, 15 June 2013
+
+* updated dependencies and data
 
 ### v. 0.3.1, 1 February 2013
 
