@@ -2,6 +2,8 @@
 
 Rails engine for adding aviation related models and data to a web application.
 
+**Compatible with Rails 4.0**
+
 It will add 3 Active Record models to your rails application: `Airports`, `Runways`
 and `Waypoints` (including Navaids). It will add the corresponding database
 structure (migrations) and finally it will populate the corresponding tables of
@@ -22,7 +24,7 @@ and shall not be used for real world navigation and flight as it is unlawful and
 Add this gem AND the `activerecord-import` gem to your application's Gemfile:
 
     gem 'airdata'
-    gem "activerecord-import", "~> 0.3.0"  # Required for the data import
+    gem "activerecord-import", "~> 0.4.1"  # Required for the data import
 
 And then execute:
 
@@ -194,6 +196,10 @@ rake airdata:update              # Removes old Airdata and installs latest avail
   executed and will inject the latest available dataset
 
 ## Changelog
+
+### v. 0.4.0, 30 Aug 2013
+
+* rails 4 compatibility
 
 ### v. 0.3.2, 15 June 2013
 
