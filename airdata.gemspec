@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.0"
   # s.add_dependency "jquery-rails"
-  s.add_dependency "curb", "~> 0.8.4"
+  s.add_dependency "curb", "~> 0.8.5"
   s.add_dependency "activerecord-import", ">= 0.4.1"
   s.add_dependency "protected_attributes", "~> 1.0.3"
 

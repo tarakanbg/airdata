@@ -197,6 +197,10 @@ rake airdata:update              # Removes old Airdata and installs latest avail
 
 ## Changelog
 
+### v. 0.4.1, 26 Oct 2013
+
+* dependencies update
+
 ### v. 0.4.0, 30 Aug 2013
 
 * rails 4 compatibility
