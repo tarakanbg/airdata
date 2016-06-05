@@ -7,8 +7,8 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
-gem "activerecord-import", "~> 0.4.1"
-gem "protected_attributes", "~> 1.0.3"
+gem 'activerecord-import', '~> 0.13.0'
+gem 'protected_attributes', '~> 1.1', '>= 1.1.3'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
