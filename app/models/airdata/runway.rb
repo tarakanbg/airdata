@@ -5,6 +5,6 @@ module Airdata
 
     belongs_to :airport
 
-    default_scope order("airport_id ASC")
+    default_scope {order("airport_id ASC")}
   end
 end

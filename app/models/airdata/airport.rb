@@ -4,6 +4,6 @@ module Airdata
 
     has_many :runways, :dependent => :destroy
 
-    default_scope order("id ASC")
+    default_scope {order("id ASC")}
   end
 end
